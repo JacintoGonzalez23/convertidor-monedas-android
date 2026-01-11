@@ -1,5 +1,4 @@
 package com.jagrlabs.convertidordemonedas;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
