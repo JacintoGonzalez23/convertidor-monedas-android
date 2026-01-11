@@ -1,59 +1,54 @@
 package com.jagrlabs.convertidordemonedas;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import android.widget.Switch;
+// 1. Cambiamos la importación
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 public class ConfiguracionActivity extends AppCompatActivity {
 
-    private static final String PREFS_NAME = "MyPrefsFile";
-    private static final String MODO_OSCURO_KEY = "modoOscuro";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
-        setTitle(getString(R.string.titulo_configuracion)); // Agregado el recurso de texto
+        setTitle(getString(R.string.titulo_configuracion));
 
-        Switch switchModoOscuro = findViewById(R.id.switch_modo_oscuro);
+        // 2. Cambiamos Switch por SwitchCompat aquí
+        SwitchCompat switchModoOscuro = findViewById(R.id.switch_modo_oscuro);
 
-        // Cargar el estado del modo oscuro desde SharedPreferences
-        // En ConfiguracionActivity
+        // Cargar el estado desde SharedPreferences usando tu clase AppPreferences
         SharedPreferences prefs = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE);
         boolean modoOscuroActivado = prefs.getBoolean(AppPreferences.MODO_OSCURO_KEY, false);
 
+        if (switchModoOscuro != null) {
+            switchModoOscuro.setChecked(modoOscuroActivado);
 
-        // Configurar el estado del interruptor según el modo oscuro
-        switchModoOscuro.setChecked(modoOscuroActivado);
+            switchModoOscuro.setOnCheckedChangeListener((buttonView, isChecked) -> activarDesactivarModoOscuro(isChecked));
+        }
 
-        // Configurar el listener del interruptor
-        switchModoOscuro.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Activar o desactivar el modo oscuro según el estado del interruptor
-            activarDesactivarModoOscuro(isChecked);
-        });
-
-        // Activa o desactiva el modo oscuro según el estado guardado o predeterminado
-        activarDesactivarModoOscuro(modoOscuroActivado);
+        // Aplicar el modo al iniciar
+        aplicarModo(modoOscuroActivado);
     }
 
     private void activarDesactivarModoOscuro(boolean activar) {
-        // Aplicar el modo oscuro según el estado actual
+        aplicarModo(activar);
+
+        // Guardar el estado usando las constantes de AppPreferences para mantener consistencia
+        SharedPreferences.Editor editor = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(AppPreferences.MODO_OSCURO_KEY, activar);
+        editor.apply();
+    }
+
+    private void aplicarModo(boolean activar) {
         if (activar) {
-            // Activar modo oscuro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
-            // Desactivar modo oscuro
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
-
-        // Actualizar el texto del título después de cambiar el modo
         setTitle(getString(R.string.titulo_configuracion));
-
-        // Guardar el estado del modo oscuro en SharedPreferences
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putBoolean(MODO_OSCURO_KEY, activar);
-        editor.apply();
     }
 }
