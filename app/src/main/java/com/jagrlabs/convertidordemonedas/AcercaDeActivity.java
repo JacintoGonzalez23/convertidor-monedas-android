@@ -3,6 +3,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,18 +20,30 @@ public class AcercaDeActivity extends AppCompatActivity {
 
         // Le asignamos el clic directamente aquí (Explicit wiring)
         if (calificarButton != null) {
-            calificarButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mostrarDialogoCalificacion(v);
-                }
-            });
+            calificarButton.setOnClickListener(this::mostrarDialogoCalificacion);
         }
     }
 
 
     // Método llamado al hacer clic en el botón "Califíquenos"
     public void mostrarDialogoCalificacion(View view) {
+        AlertDialog dialog = getAlertDialog();
+
+        // Personalizar el color del texto de ambos botones
+        dialog.setOnShowListener(dialogInterface -> {
+            Button positiveButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_POSITIVE);
+            Button negativeButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_NEGATIVE);
+
+            // Utiliza los colores definidos en ecolors.xml
+            positiveButton.setTextColor(getResources().getColor(R.color.colorMiBotonCalificar));
+            negativeButton.setTextColor(getResources().getColor(R.color.colorMiBotonCancelar));
+        });
+
+        dialog.show();
+    }
+
+    @NonNull
+    private AlertDialog getAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Califica la aplicación por favor");
         builder.setMessage("Si realmente te gusta la app, nos gustaría que nos dejes una buena puntuación.");
@@ -45,19 +59,7 @@ public class AcercaDeActivity extends AppCompatActivity {
         // Botón "Cancelar"
         builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
 
-        AlertDialog dialog = builder.create();
-
-        // Personalizar el color del texto de ambos botones
-        dialog.setOnShowListener(dialogInterface -> {
-            Button positiveButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_POSITIVE);
-            Button negativeButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_NEGATIVE);
-
-            // Utiliza los colores definidos en ecolors.xml
-            positiveButton.setTextColor(getResources().getColor(R.color.colorMiBotonCalificar));
-            negativeButton.setTextColor(getResources().getColor(R.color.colorMiBotonCancelar));
-        });
-
-        dialog.show();
+        return builder.create();
     }
 
 
