@@ -13,6 +13,18 @@ public class AcercaDeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acercade);
         setTitle("Acerca de");
+        // Buscamos el botón por su ID
+        Button calificarButton = findViewById(R.id.calificarButton);
+
+        // Le asignamos el clic directamente aquí (Explicit wiring)
+        if (calificarButton != null) {
+            calificarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mostrarDialogoCalificacion(v);
+                }
+            });
+        }
     }
 
 

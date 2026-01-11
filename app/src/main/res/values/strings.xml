@@ -53,6 +53,10 @@
     <string name="peso_uruguayo">Peso Uruguayo</string>
     <string name="ves">VES</string>
     <string name="bol_var_soberano_venezolano">Bolívar Soberano venezolano</string>
+    <string name="logo_de_la_aplicaci_n">Logo de la aplicación</string>
+    <string name="convertidor_de_dolar_a_divisas">Convertidor de dolar a divisas</string>
+    <string name="versi_n_1_0">Versión 1.0</string>
+    <string name="calif_quenos">Califíquenos</string>
 
 
 </resources>

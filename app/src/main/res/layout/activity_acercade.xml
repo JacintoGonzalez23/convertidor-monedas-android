@@ -8,22 +8,19 @@
 
     <!-- Logo -->
     <ImageView
-        android:icon="@mipmap/ic_launcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:width="108dp"
-        android:height="108dp"
-        android:viewportWidth="1024"
-        android:viewportHeight="1024"
-        android:layout_gravity="center"/>
+        android:contentDescription="@string/logo_de_la_aplicaci_n"
+        android:id="@+id/imageViewLogo"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/ic_launcher" />
 
     <!-- Nombre de la aplicación -->
     <TextView
         android:id="@+id/nombreAppTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Convertidor de dolar a divisas"
+        android:text="@string/convertidor_de_dolar_a_divisas"
         android:textSize="23sp"
         android:textStyle="bold"
         android:layout_gravity="center"
@@ -35,7 +32,7 @@
         android:id="@+id/versionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Versión 1.0"
+        android:text="@string/versi_n_1_0"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_marginTop="4dp"/>
@@ -55,9 +52,8 @@
         android:layout_height="59dp"
         android:background="@drawable/ic_launcher_background"
         android:gravity="center"
-        android:onClick="mostrarDialogoCalificacion"
         android:padding="5dp"
-        android:text="Califíquenos"
+        android:text="@string/calif_quenos"
         android:textSize="20sp"
         android:textAllCaps="false" />
 
