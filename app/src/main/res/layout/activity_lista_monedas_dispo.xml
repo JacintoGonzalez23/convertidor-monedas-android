@@ -1,0 +1,351 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:ignore="ExtraText">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listado de monedas disponibles"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/dividerHorizontal"/>
+
+        <!-- Espaciador -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+
+        <!-- Descripción -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Este es un listado de las monedas disponibles, el código de la moneda junto a su nombre respectivamente."
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:background="#D0D0D1"
+            android:textColor="#474646"
+            android:padding="16dp"
+            android:elevation="4dp" />
+
+        <TableLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:background="#E5E5E5">
+
+            <!-- Fila de encabezado -->
+            <TableRow
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/codigo_moneda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Código de Moneda"
+                    android:textColor="#474646"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:background="#D0D0D1"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/nombre_moneda"
+                    android:layout_width="193dp"
+                    android:layout_height="wrap_content"
+                    android:background="#D0D0D1"
+                    android:gravity="center"
+
+                    android:padding="8dp"
+                    android:text="Nombre de la Moneda"
+                    android:textColor="#474646"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <!-- Fila 1 -->
+            <TableRow
+                android:background="#F5F5F5"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:id="@+id/usd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USD"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dolar estadounidense"
+                    android:textSize="16sp"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    />
+            </TableRow>
+
+            <!-- Fila 2 -->
+            <TableRow
+                android:background="#F5F5F5"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EUR"
+                    android:textSize="14sp"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Euro"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <!-- Fila 3 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MXN"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Mexicano"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <!-- Fila 4 -->
+            <TableRow
+                android:background="#F5F5F5"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PEN"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sol Peruano"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <!-- Fila 5 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JPY"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yen Japonés"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <!-- Fila 6 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COP"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Colombiano"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <!-- Fila 7 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DOP"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Dominicano"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <!-- Fila 8 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CLP"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Chileno"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <!-- Fila 9 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CUP"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Cubano"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <!-- Fila 10 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UYU"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso Uruguayo"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <!-- Fila 11 -->
+            <TableRow
+                android:background="#FFFFFF"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VES"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bolívar Soberano venezolano"
+                    android:background="#F5F5F5"
+                    android:textColor="#474646"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:gravity="center"/>
+            </TableRow>
+
+
+
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>

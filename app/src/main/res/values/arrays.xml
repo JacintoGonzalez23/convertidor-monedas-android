@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Utiliza los nombres de las monedas en lugar de los códigos -->
+    <string-array name="currencies">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>MXN</item>
+        <item>PEN</item>
+        <item>JPY</item>
+        <item>COP</item>
+        <item>DOP</item>
+        <item>CLP</item>
+        <item>CUP</item>
+        <item>UYU</item>
+        <item>VES</item>
+
+
+    </string-array>
+</resources>
+

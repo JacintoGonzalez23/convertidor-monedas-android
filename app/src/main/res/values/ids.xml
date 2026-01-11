@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="switch_modo_oscuro" type="id" />
+    <item name="calificarButton" type="id" />
+    <item name="versionTextView" type="id" />
+    <item name="nombreAppTextView" type="id" />
+    <item name="logoImageView" type="id" />
+</resources>

@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/lista_monedas_disponibles"
+        android:title="@string/Listado_de_monedas"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/Configuración"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/Acerca_de"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/salir_aplicacion"
+        android:title="@string/Salir"
+        app:showAsAction="never" />
+
+
+</menu>

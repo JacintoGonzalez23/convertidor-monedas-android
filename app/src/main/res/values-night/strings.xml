@@ -1,0 +1,31 @@
+<resources>
+
+    <string name="app_name">Convertidor de monedas</string>
+    <string name="no_internet_connection">Sin conexión a internet</string>
+    <string name="titulo_configuracion">Configuración</string>
+    <string name="empy_amount">Primero ingrese la cantidad</string>
+    <string name="descripcion_listado">Este es un listado de las monedas disponibles, el código de la moneda junto a su nombre respectivamente.</string>
+    <string name="codigo_moneda">Codigo de la moneda</string>
+    <string name="nombre_moneda">Nombre de la moneda</string>
+    <string name="Listado_de_monedas">Listado de monedas</string>
+    <string name="Configuración">Configuración</string>
+    <string name="Acerca_de">Acerca de</string>
+    <string name="Salir">Salir</string>
+    <string name="Modo_Oscuro">Modo oscuro</string>
+    <string name="Activity_configuracion_configuracion">Configuración</string>
+
+    <string name="usd">USD</string>
+    <string name="nombre_usd">Dolar estadounidense</string>
+    <string name="eur">EUR</string>
+    <string name="nombre_eur">Euro</string>
+    <string name="mxn">MXN</string>
+    <string name="nombre_mxn">Peso mexicano</string>
+    <string name="pen">PEN</string>
+    <string name="nombre_pen">Sol peruano</string>
+    <string name="jpy">JPY</string>
+    <string name="nombre_jpy">Yen japones</string>
+
+
+
+</resources>
+
