@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     private void abrirActividadConfiguracion() { startActivity(new Intent(this, ConfiguracionActivity.class)); }
     private void mostrarAcercaDe() { startActivity(new Intent(this, AcercaDeActivity.class)); }
 
-    // Método para el botón calificar (debes tener la lógica aquí)
+
 
 
     private boolean isNetworkConnected() {

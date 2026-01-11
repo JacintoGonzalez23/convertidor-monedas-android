@@ -25,7 +25,7 @@ public class AcercaDeActivity extends AppCompatActivity {
     }
 
 
-    // Método llamado al hacer clic en el botón "Califíquenos"
+
     public void mostrarDialogoCalificacion(View view) {
         AlertDialog dialog = getAlertDialog();
 
