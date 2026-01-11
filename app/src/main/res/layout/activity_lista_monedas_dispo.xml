@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Listado de monedas disponibles"
+            android:text="@string/listado_de_monedas_disponibles"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_gravity="center"/>
@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Este es un listado de las monedas disponibles, el código de la moneda junto a su nombre respectivamente."
+            android:text="@string/este_es_un_listado_de_las_monedas_disponibles_el_c_digo_de_la_moneda_junto_a_su_nombre_respectivamente"
             android:textSize="16sp"
             android:lineSpacingExtra="4dp"
             android:gravity="center_horizontal"
@@ -60,7 +60,7 @@
                     android:id="@+id/codigo_moneda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Código de Moneda"
+                    android:text="@string/c_digo_de_moneda"
                     android:textColor="#474646"
                     android:textStyle="bold"
                     android:textSize="16sp"
@@ -76,7 +76,7 @@
                     android:gravity="center"
 
                     android:padding="8dp"
-                    android:text="Nombre de la Moneda"
+                    android:text="@string/nombre_de_la_moneda"
                     android:textColor="#474646"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -90,7 +90,7 @@
                     android:id="@+id/usd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="USD"
+                    android:text="@string/usd2"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -99,7 +99,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dolar estadounidense"
+                    android:text="@string/dolar_estadounidense"
                     android:textSize="16sp"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
@@ -115,7 +115,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EUR"
+                    android:text="@string/eur2"
                     android:textSize="14sp"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
@@ -124,7 +124,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Euro"
+                    android:text="@string/euro2"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -139,7 +139,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MXN"
+                    android:text="@string/mxn2"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -148,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Peso Mexicano"
+                    android:text="@string/peso_mexicano"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -163,7 +163,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PEN"
+                    android:text="@string/pen2"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -172,7 +172,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sol Peruano"
+                    android:text="@string/sol_peruano"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -187,7 +187,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="JPY"
+                    android:text="@string/jpy2"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -196,7 +196,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yen Japonés"
+                    android:text="@string/yen_japon_s"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -210,7 +210,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="COP"
+                    android:text="@string/cop"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -219,7 +219,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Peso Colombiano"
+                    android:text="@string/peso_colombiano"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -233,7 +233,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DOP"
+                    android:text="@string/dop"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -242,7 +242,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Peso Dominicano"
+                    android:text="@string/peso_dominicano"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -257,7 +257,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CLP"
+                    android:text="@string/clp"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -266,7 +266,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Peso Chileno"
+                    android:text="@string/peso_chileno"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -280,7 +280,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CUP"
+                    android:text="@string/cup"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -289,7 +289,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Peso Cubano"
+                    android:text="@string/peso_cubano"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -304,7 +304,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="UYU"
+                    android:text="@string/uyu"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -313,7 +313,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Peso Uruguayo"
+                    android:text="@string/peso_uruguayo"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -327,7 +327,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="VES"
+                    android:text="@string/ves"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"
@@ -336,7 +336,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bolívar Soberano venezolano"
+                    android:text="@string/bol_var_soberano_venezolano"
                     android:background="#F5F5F5"
                     android:textColor="#474646"
                     android:textSize="14sp"

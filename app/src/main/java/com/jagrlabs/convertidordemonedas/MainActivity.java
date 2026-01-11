@@ -33,11 +33,11 @@ import android.view.inputmethod.InputMethodManager;
 
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText editAmount;
     private Spinner spinnerFrom, spinnerTo;
-    private Button btnConvert;
     private TextView tvResult;
 
     // Dentro de tu MainActivity
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         editAmount = findViewById(R.id.editAmount);
         spinnerFrom = findViewById(R.id.spinnerFrom);
         spinnerTo = findViewById(R.id.spinnerTo);
-        btnConvert = findViewById(R.id.btnConvert);
+        Button btnConvert = findViewById(R.id.btnConvert);
         tvResult = findViewById(R.id.tvResult);
 
         editAmount = findViewById(R.id.editAmount);
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         }
         // Obtener datos de la interfaz
         double amount = Double.parseDouble(amountStr);
-        String fromCurrency = spinnerFrom.getSelectedItem().toString();
+        spinnerFrom.getSelectedItem().toString();
         String toCurrency = spinnerTo.getSelectedItem().toString();
 
         // Construir la URL de la API de conversión (reemplaza 'API_KEY' con tu clave real)

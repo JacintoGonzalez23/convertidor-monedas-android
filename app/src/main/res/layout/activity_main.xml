@@ -12,7 +12,7 @@
         android:id="@+id/editAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el dolar"
+        android:hint="@string/ingrese_el_dolar"
         android:inputType="numberDecimal"
         android:padding="48dp"
         android:textSize="28sp"
@@ -25,7 +25,7 @@
         android:layout_height="48dp"
         android:layout_below="@id/editAmount"
         android:layout_marginTop="48dp"
-        android:contentDescription="La monedad base es dolar"
+        android:contentDescription="@string/la_monedad_base_es_dolar"
         android:textSize="28sp"/>
 
     <Spinner
@@ -33,8 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/spinnerFrom"
-        android:contentDescription="Seleccionar moneda de destino"
-        android:textSize="25sp"/>
+        android:layout_marginTop="18dp"
+        android:contentDescription="@string/seleccionar_moneda_de_destino"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/btnConvert"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerTo"
         android:layout_marginTop="48dp"
-        android:text="Convertir divisa"
+        android:text="@string/convertir_divisa"
         android:textSize="22sp"/>
 
     <TextView

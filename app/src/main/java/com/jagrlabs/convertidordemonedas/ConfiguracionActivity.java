@@ -1,7 +1,7 @@
 package com.jagrlabs.convertidordemonedas;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.Switch;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -11,15 +11,13 @@ public class ConfiguracionActivity extends AppCompatActivity {
     private static final String PREFS_NAME = "MyPrefsFile";
     private static final String MODO_OSCURO_KEY = "modoOscuro";
 
-    private Switch switchModoOscuro;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
         setTitle(getString(R.string.titulo_configuracion)); // Agregado el recurso de texto
 
-        switchModoOscuro = findViewById(R.id.switch_modo_oscuro);
+        Switch switchModoOscuro = findViewById(R.id.switch_modo_oscuro);
 
         // Cargar el estado del modo oscuro desde SharedPreferences
         // En ConfiguracionActivity

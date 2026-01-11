@@ -24,37 +24,26 @@ public class AcercaDeActivity extends AppCompatActivity {
         builder.setMessage("Si realmente te gusta la app, nos gustaría que nos dejes una buena puntuación.");
 
         // Botón "Calificar"
-        builder.setPositiveButton("Calificar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Puedes redirigir al usuario a la página de calificación de la aplicación en la tienda
-                // Por ejemplo, Google Play Store
-                //esto es una linea para actualizar
-                Toast.makeText(AcercaDeActivity.this, "Redirigir al usuario a la página de calificación", Toast.LENGTH_SHORT).show();
-            }
+        builder.setPositiveButton("Calificar", (dialog, which) -> {
+            // Puedes redirigir al usuario a la página de calificación de la aplicación en la tienda
+            // Por ejemplo, Google Play Store
+            //esto es una linea para actualizar
+            Toast.makeText(AcercaDeActivity.this, "Redirigir al usuario a la página de calificación", Toast.LENGTH_SHORT).show();
         });
 
         // Botón "Cancelar"
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
 
         AlertDialog dialog = builder.create();
 
         // Personalizar el color del texto de ambos botones
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                Button positiveButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_POSITIVE);
-                Button negativeButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_NEGATIVE);
+        dialog.setOnShowListener(dialogInterface -> {
+            Button positiveButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_POSITIVE);
+            Button negativeButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_NEGATIVE);
 
-                // Utiliza los colores definidos en ecolors.xml
-                positiveButton.setTextColor(getResources().getColor(R.color.colorMiBotonCalificar));
-                negativeButton.setTextColor(getResources().getColor(R.color.colorMiBotonCancelar));
-            }
+            // Utiliza los colores definidos en ecolors.xml
+            positiveButton.setTextColor(getResources().getColor(R.color.colorMiBotonCalificar));
+            negativeButton.setTextColor(getResources().getColor(R.color.colorMiBotonCancelar));
         });
 
         dialog.show();

@@ -23,8 +23,36 @@
     <string name="nombre_pen">Sol peruano</string>
     <string name="jpy">JPY</string>
     <string name="nombre_jpy">Yen japones</string>
-
-
+    <string name="ingrese_el_dolar">Ingrese el dolar</string>
+    <string name="la_monedad_base_es_dolar">La monedad base es dolar</string>
+    <string name="seleccionar_moneda_de_destino">Seleccionar moneda de destino</string>
+    <string name="convertir_divisa">Convertir divisa</string>
+    <string name="listado_de_monedas_disponibles">Listado de monedas disponibles</string>
+    <string name="este_es_un_listado_de_las_monedas_disponibles_el_c_digo_de_la_moneda_junto_a_su_nombre_respectivamente">Este es un listado de las monedas disponibles, el código de la moneda junto a su nombre respectivamente.</string>
+    <string name="c_digo_de_moneda">Código de Moneda</string>
+    <string name="nombre_de_la_moneda">Nombre de la Moneda</string>
+    <string name="usd2">USD</string>
+    <string name="dolar_estadounidense">Dolar estadounidense</string>
+    <string name="eur2">EUR</string>
+    <string name="euro2">Euro</string>
+    <string name="mxn2">MXN</string>
+    <string name="peso_mexicano">Peso Mexicano</string>
+    <string name="pen2">PEN</string>
+    <string name="sol_peruano">Sol Peruano</string>
+    <string name="jpy2">JPY</string>
+    <string name="yen_japon_s">Yen Japonés</string>
+    <string name="cop">COP</string>
+    <string name="peso_colombiano">Peso Colombiano</string>
+    <string name="dop">DOP</string>
+    <string name="peso_dominicano">Peso Dominicano</string>
+    <string name="clp">CLP</string>
+    <string name="peso_chileno">Peso Chileno</string>
+    <string name="cup">CUP</string>
+    <string name="peso_cubano">Peso Cubano</string>
+    <string name="uyu">UYU</string>
+    <string name="peso_uruguayo">Peso Uruguayo</string>
+    <string name="ves">VES</string>
+    <string name="bol_var_soberano_venezolano">Bolívar Soberano venezolano</string>
 
 
 </resources>
