@@ -46,14 +46,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+        // 1. Leer la preferencia ANTES de super.onCreate
         SharedPreferences prefs = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE);
         boolean modoOscuroActivado = prefs.getBoolean(AppPreferences.MODO_OSCURO_KEY, false);
 
+        // 2. Aplicar solo lo que el usuario eligió (si es false, será modo claro)
         if (modoOscuroActivado) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Inicialización de vistas
