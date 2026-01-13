@@ -58,6 +58,9 @@
     <string name="version">Versión 1.0</string>
     <string name="califiquenos">Califica la app</string>
     <string name="dialog_Consulta_Moneda">Aquí puedes consultar los códigos internacionales de las divisas que nuestra app puede convertir en tiempo real.</string>
+    <string name="monto_a_convertir">Monto a convertir</string>
+    <string name="de">De:</string>
+    <string name="a">A:</string>
 
 
 </resources>

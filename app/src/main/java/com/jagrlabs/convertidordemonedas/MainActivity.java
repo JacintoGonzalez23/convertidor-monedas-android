@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import androidx.appcompat.widget.Toolbar;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,18 +42,17 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerTo;
     private TextView tvResult;
 
-    // Ejecutor para reemplazar AsyncTask
+    // Se agrega Looper.getMainLooper() para que el Handler funcione correctamente
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // 1. Lee la preferencia ANTES de super.onCreate
         SharedPreferences prefs = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE);
-        boolean modoOscuroActivado = prefs.getBoolean(AppPreferences.MODO_OSCURO_KEY, false);
+        boolean modoOscuro = prefs.getBoolean(AppPreferences.MODO_OSCURO_KEY, false);
 
-        // 2. Aplica solo lo que el usuario eligió (si es false, será modo claro)
-        if (modoOscuroActivado) {
+        // Fuerza el tema ANTES de super.onCreate
+        if (modoOscuro) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -59,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // --- CONFIGURACIÓN DE LA NUEVA TOOLBAR ---
+        // Esto activa los tres puntos en el diseño moderno
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         // Inicialización de vistas
         editAmount = findViewById(R.id.editAmount);
         Spinner spinnerFrom = findViewById(R.id.spinnerFrom);
@@ -66,12 +73,10 @@ public class MainActivity extends AppCompatActivity {
         tvResult = findViewById(R.id.tvResult);
         Button btnConvert = findViewById(R.id.btnConvert);
 
-        // Configuración del botón Calificar (Evita el warning del XML)
-
-
-        // En el onCreate de MainActivity
+        // Configuración de entrada de texto
         editAmount.setInputType(android.text.InputType.TYPE_CLASS_NUMBER | android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
+        // Adaptadores para Spinners
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.currencies, android.R.layout.simple_spinner_item
         );

@@ -65,8 +65,9 @@
         android:textSize="18sp"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="@color/primary_blue"
         app:cornerRadius="12dp"
-        android:elevation="4dp" />
+        android:elevation="4dp"
+        />
 
 </LinearLayout>
