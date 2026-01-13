@@ -2,13 +2,10 @@ package com.jagrlabs.convertidordemonedas;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.activity.OnBackPressedCallback;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class ConfiguracionActivity extends AppCompatActivity {
 

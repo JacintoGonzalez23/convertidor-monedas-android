@@ -12,29 +12,30 @@ public class DecimalDigitsInputFilter implements InputFilter {
 
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-        // Combinar el texto actual con el nuevo cambio
-        String resultText = dest.subSequence(0, dstart).toString()
-                + source.subSequence(start, end).toString()
-                + dest.subSequence(dend, dest.length()).toString();
+        // 1. Creamos el StringBuilder para combinar el texto sin errores/warnings
 
-        // Si el texto está vacío, permitirlo
+        String resultText = String.valueOf(dest.subSequence(0, dstart)) +
+                source.subSequence(start, end) +
+                dest.subSequence(dend, dest.length());
+
+        // 2. Si el texto resultante está vacío, permitirlo (borrado total)
         if (resultText.isEmpty()) {
             return null;
         }
 
-        // Si solo es un punto, permitirlo (para que el usuario pueda empezar con ".5")
+        // 3. Si solo es un punto, permitirlo (para empezar con ".5")
         if (resultText.equals(".")) {
             return null;
         }
 
-        // Verificar si hay más de un punto decimal
+        // 4. Verificar si hay más de un punto decimal
         int count = 0;
         for (int i = 0; i < resultText.length(); i++) {
             if (resultText.charAt(i) == '.') count++;
         }
         if (count > 1) return "";
 
-        // Verificar la cantidad de decimales después del punto
+        // 5. Verificar la cantidad de decimales después del punto
         if (resultText.contains(".")) {
             String decimals = resultText.substring(resultText.indexOf(".") + 1);
             if (decimals.length() > decimalDigits) {
@@ -42,6 +43,6 @@ public class DecimalDigitsInputFilter implements InputFilter {
             }
         }
 
-        return null; // Acepta el cambio
+        return null; // Acepta el cambio si pasa todas las pruebas
     }
 }

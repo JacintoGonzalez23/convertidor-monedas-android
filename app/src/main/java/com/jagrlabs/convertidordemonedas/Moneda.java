@@ -1,8 +1,8 @@
 package com.jagrlabs.convertidordemonedas;
 
 public class Moneda {
-    private String codigo;
-    private String nombre;
+    private final String codigo;
+    private final String nombre;
 
     public Moneda(String codigo, String nombre) {
         this.codigo = codigo;
