@@ -34,7 +34,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
 
         SwitchCompat switchModoOscuro = findViewById(R.id.switch_modo_oscuro);
 
-        // Cargar el estado desde SharedPreferences usando tu clase AppPreferences
+        // Carga el estado desde SharedPreferences usando tu clase AppPreferences
         SharedPreferences prefs = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE);
         boolean modoOscuroActivado = prefs.getBoolean(AppPreferences.MODO_OSCURO_KEY, false);
 
@@ -50,12 +50,12 @@ public class ConfiguracionActivity extends AppCompatActivity {
     }
 
     private void activarDesactivarModoOscuro(boolean activar) {
-        // 1. Guardar primero la preferencia
+        //  Guarda primero la preferencia
         SharedPreferences.Editor editor = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE).edit();
         editor.putBoolean(AppPreferences.MODO_OSCURO_KEY, activar);
         editor.apply();
 
-        // 2. Aplicar el modo
+        //  Aplica el modo
         if (activar) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
@@ -63,7 +63,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
         }
     }
 
-    //Hacer que la flecha realmente cierre la actividad y vuelva atrás
+    //Hace que la flecha realmente cierre la actividad y vuelva atrás
     @Override
     public boolean onSupportNavigateUp() {
         finish(); // Cierra esta actividad y regresa a la anterior (MainActivity)
