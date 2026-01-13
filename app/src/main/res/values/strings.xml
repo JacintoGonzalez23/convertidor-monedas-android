@@ -55,8 +55,9 @@
     <string name="bol_var_soberano_venezolano">Bolívar Soberano venezolano</string>
     <string name="logo_de_la_aplicaci_n">Logo de la aplicación</string>
     <string name="convertidor_de_dolar_a_divisas">Convertidor de dolar a divisas</string>
-    <string name="versi_n_1_0">Versión 1.0</string>
-    <string name="calif_quenos">Califíquenos</string>
+    <string name="version">Versión 1.0</string>
+    <string name="califiquenos">Califica la app</string>
+    <string name="dialog_Consulta_Moneda">Aquí puedes consultar los códigos internacionales de las divisas que nuestra app puede convertir en tiempo real.</string>
 
 
 </resources>

@@ -7,7 +7,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.InputFilter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // 1. Leer la preferencia ANTES de super.onCreate
+        // 1. Lee la preferencia ANTES de super.onCreate
         SharedPreferences prefs = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE);
         boolean modoOscuroActivado = prefs.getBoolean(AppPreferences.MODO_OSCURO_KEY, false);
 
-        // 2. Aplicar solo lo que el usuario eligió (si es false, será modo claro)
+        // 2. Aplica solo lo que el usuario eligió (si es false, será modo claro)
         if (modoOscuroActivado) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
@@ -70,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
         // Configuración del botón Calificar (Evita el warning del XML)
 
 
-        editAmount.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
+        // En el onCreate de MainActivity
+        editAmount.setInputType(android.text.InputType.TYPE_CLASS_NUMBER | android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.currencies, android.R.layout.simple_spinner_item

@@ -2,10 +2,13 @@ package com.jagrlabs.convertidordemonedas;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-// 1. Cambiamos la importación
+
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.activity.OnBackPressedCallback;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ConfiguracionActivity extends AppCompatActivity {
 
@@ -17,6 +20,20 @@ public class ConfiguracionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuracion);
         setTitle(getString(R.string.titulo_configuracion));
 
+        //  Configura la barra con la flecha de retroceso
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(getString(R.string.titulo_configuracion));
+        }
+        // --- retrocede con gestos android 13+ ---
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Esto se ejecuta cuando el usuario presiona el botón "atrás" físico
+                // o hace el gesto de deslizar en el borde de la pantalla
+                finish();
+            }
+        });
 
         SwitchCompat switchModoOscuro = findViewById(R.id.switch_modo_oscuro);
 
@@ -47,6 +64,13 @@ public class ConfiguracionActivity extends AppCompatActivity {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+    }
+
+    //Hacer que la flecha realmente cierre la actividad y vuelva atrás
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // Cierra esta actividad y regresa a la anterior (MainActivity)
+        return true;
     }
 
 

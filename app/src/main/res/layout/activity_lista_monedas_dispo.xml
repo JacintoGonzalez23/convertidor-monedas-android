@@ -1,351 +1,43 @@
-<ScrollView
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground"
+    tools:context=".ListadoMonedasDisponibles">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="80dp"/>
+    <!-- por si acaso
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:ignore="ExtraText">
-
-        <!-- Título -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/listado_de_monedas_disponibles"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
-
-        <!-- Separador -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/dividerHorizontal"/>
-
-        <!-- Espaciador -->
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp"/>
+        android:text="@string/listado_de_monedas_disponibles"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:padding="20dp"
+        android:gravity="center"
+        android:textColor="?android:attr/textColorPrimary"/>
+        -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_Consulta_Moneda"
+        android:padding="20dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:gravity="center"/>
 
 
-        <!-- Descripción -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/este_es_un_listado_de_las_monedas_disponibles_el_c_digo_de_la_moneda_junto_a_su_nombre_respectivamente"
-            android:textSize="16sp"
-            android:lineSpacingExtra="4dp"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            android:background="#D0D0D1"
-            android:textColor="#474646"
-            android:padding="16dp"
-            android:elevation="4dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMonedas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp"/>
 
-        <TableLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:background="#E5E5E5">
-
-            <!-- Fila de encabezado -->
-            <TableRow
-                android:layout_marginBottom="8dp">
-                <TextView
-                    android:id="@+id/codigo_moneda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/c_digo_de_moneda"
-                    android:textColor="#474646"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:padding="8dp"
-                    android:background="#D0D0D1"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/nombre_moneda"
-                    android:layout_width="193dp"
-                    android:layout_height="wrap_content"
-                    android:background="#D0D0D1"
-                    android:gravity="center"
-
-                    android:padding="8dp"
-                    android:text="@string/nombre_de_la_moneda"
-                    android:textColor="#474646"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </TableRow>
-
-            <!-- Fila 1 -->
-            <TableRow
-                android:background="#F5F5F5"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:id="@+id/usd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/usd2"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dolar_estadounidense"
-                    android:textSize="16sp"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    />
-            </TableRow>
-
-            <!-- Fila 2 -->
-            <TableRow
-                android:background="#F5F5F5"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/eur2"
-                    android:textSize="14sp"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/euro2"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-
-            <!-- Fila 3 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mxn2"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peso_mexicano"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-
-            <!-- Fila 4 -->
-            <TableRow
-                android:background="#F5F5F5"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pen2"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sol_peruano"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-
-            <!-- Fila 5 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/jpy2"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yen_japon_s"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-            <!-- Fila 6 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cop"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peso_colombiano"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-            <!-- Fila 7 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dop"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peso_dominicano"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-
-            <!-- Fila 8 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/clp"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peso_chileno"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-            <!-- Fila 9 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cup"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peso_cubano"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-
-            <!-- Fila 10 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/uyu"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peso_uruguayo"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-            <!-- Fila 11 -->
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginBottom="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ves"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bol_var_soberano_venezolano"
-                    android:background="#F5F5F5"
-                    android:textColor="#474646"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:gravity="center"/>
-            </TableRow>
-
-
-
-        </TableLayout>
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

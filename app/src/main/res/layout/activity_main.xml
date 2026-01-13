@@ -24,7 +24,9 @@
             android:gravity="center"
             android:hint="@string/ingrese_el_dolar"
             android:inputType="numberDecimal"
-            android:textColor="@android:color/white"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textColorHint="?android:attr/textColorHint"
+
             android:textSize="36sp" />
 
         <Spinner

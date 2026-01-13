@@ -1,61 +1,72 @@
-<!-- res/layout/activity_acerca_de.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="?android:attr/colorBackground"
+    android:gravity="center_horizontal">
 
-    <!-- Logo -->
-    <ImageView
-        android:contentDescription="@string/logo_de_la_aplicaci_n"
-        android:id="@+id/imageViewLogo"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="90dp"/>
 
-    <!-- Nombre de la aplicación -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        android:layout_marginBottom="24dp">
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/logo_de_la_aplicaci_n"
+            android:padding="16dp"
+            android:src="@mipmap/ic_launcher" />
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/nombreAppTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/convertidor_de_dolar_a_divisas"
-        android:textSize="23sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"/>
+        android:textColor="?android:attr/textColorPrimary"
+        android:gravity="center"/>
 
-
-    <!-- Versión de la aplicación -->
     <TextView
         android:id="@+id/versionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/versi_n_1_0"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp"/>
+        android:layout_marginTop="8dp"
+        android:alpha="0.7"
+        android:text="@string/version"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="16sp" />
 
-    <!-- Separador -->
     <View
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="1dp"
         android:background="?android:attr/dividerHorizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginVertical="32dp"/>
 
-    <!-- Botón para calificar -->
     <Button
         android:id="@+id/calificarButton"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:background="@drawable/ic_launcher_background"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/calif_quenos"
-        android:textSize="20sp"
-        android:textAllCaps="false" />
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:minWidth="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:text="@string/califiquenos"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:backgroundTint="?attr/colorPrimary"
+        app:cornerRadius="12dp"
+        android:elevation="4dp" />
 
 </LinearLayout>
-
