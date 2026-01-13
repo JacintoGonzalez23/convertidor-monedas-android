@@ -20,18 +20,25 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+       <activity
+           android:name=".MainActivity"
+           android:exported="true">
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+       </activity>
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+       <activity
+           android:name=".ListadoMonedasDisponibles"
+           android:parentActivityName=".MainActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ListadoMonedasDisponibles" />
-        <activity android:name=".ConfiguracionActivity" />
-        <activity android:name=".AcercaDeActivity" />
+       <activity
+           android:name=".ConfiguracionActivity"
+           android:parentActivityName=".MainActivity" />
+
+       <activity
+           android:name=".AcercaDeActivity"
+           android:parentActivityName=".MainActivity" />
     </application>
 </manifest>

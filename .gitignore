@@ -9,5 +9,10 @@ local.properties
 .idea/
 *.iml
 
-# App build
+# Ignora todos los paquetes de Android (bundles y APKs)
+*.aab
+*.apk
+
+# Ignora la carpeta de compilación completa
+
 app/build/
