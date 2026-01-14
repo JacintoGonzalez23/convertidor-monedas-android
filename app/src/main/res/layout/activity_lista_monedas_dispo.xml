@@ -1,43 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?android:attr/colorBackground"
-    tools:context=".ListadoMonedasDisponibles">
+    android:background="?android:attr/windowBackground"
+    android:fitsSystemWindows="true">
 
-    <Space
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_listado"
         android:layout_width="match_parent"
-        android:layout_height="80dp"/>
-    <!-- por si acaso
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/listado_de_monedas_disponibles"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:padding="20dp"
-        android:gravity="center"
-        android:textColor="?android:attr/textColorPrimary"/>
-        -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dialog_Consulta_Moneda"
-        android:padding="20dp"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:textColor="?android:attr/textColorSecondary"
-        android:gravity="center"/>
-
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary_blue"
+        app:title="Listado de Monedas"
+        app:titleTextColor="@color/white"
+        app:navigationIconTint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMonedas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="20dp"/>
+        android:padding="12dp"
+        android:clipToPadding="false" />
 
 </LinearLayout>

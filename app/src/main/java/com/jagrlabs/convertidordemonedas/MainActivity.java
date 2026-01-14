@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
-        // Ocultar teclado
+        // Oculta teclado
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         if (getCurrentFocus() != null) {
             imm.hideSoftInputFromWindow(editAmount.getWindowToken(), 0);

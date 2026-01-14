@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 import androidx.activity.OnBackPressedCallback; // import de los gestos de retorceder
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,13 +17,16 @@ public class AcercaDeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acercade);
 
-        //  Configura Flecha de Retroceso
+        //  Configura la Toolbar correctamente
+        Toolbar toolbar = findViewById(R.id.toolbar_acerca);
+        setSupportActionBar(toolbar);
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Acerca de");
+            getSupportActionBar().setTitle("Acerca de"); // Título centralizado
         }
 
-        //  Manejo moderno del botón/gesto atrás
+        //  Manejo del botón/gesto atrás (Android 13+)
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -30,13 +34,14 @@ public class AcercaDeActivity extends AppCompatActivity {
             }
         });
 
+        //  Botón de calificación
         Button calificarButton = findViewById(R.id.calificarButton);
         if (calificarButton != null) {
             calificarButton.setOnClickListener(this::mostrarDialogoCalificacion);
         }
     }
 
-    // Maneja el clic en la flecha de la barra superior
+    // Flecha de retroceso de la Toolbar
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -50,12 +55,12 @@ public class AcercaDeActivity extends AppCompatActivity {
             Button positiveButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_POSITIVE);
             Button negativeButton = ((AlertDialog) dialogInterface).getButton(AlertDialog.BUTTON_NEGATIVE);
 
-            //
+            // Uso de ContextCompat para evitar errores de color según la versión de Android
             try {
-                positiveButton.setTextColor(getResources().getColor(R.color.colorMiBotonCalificar));
-                negativeButton.setTextColor(getResources().getColor(R.color.colorMiBotonCancelar));
+                positiveButton.setTextColor(androidx.core.content.ContextCompat.getColor(this, R.color.colorMiBotonCalificar));
+                negativeButton.setTextColor(androidx.core.content.ContextCompat.getColor(this, R.color.colorMiBotonCancelar));
             } catch (Exception e) {
-                // Fallback si los colores no existen
+                // Colores de respaldo si  fallan
             }
         });
 
@@ -67,22 +72,10 @@ public class AcercaDeActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("¿Te gusta la aplicación?");
         builder.setMessage("Tu opinión ayuda a seguir mejorando. ¿Podrías regalar una calificación?");
-      /*
-        builder.setPositiveButton("Calificar", (dialog, which) -> {
-            try {
-                // Esto intenta abrir la Play Store directamente en la app
-                startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW,
-                        android.net.Uri.parse("market://details?id=" + getPackageName())));
-            } catch (android.content.ActivityNotFoundException e) {
-                // Si no tiene la app de Play Store (como en algunos emuladores), abre el navegador
-                startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW,
-                        android.net.Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-            }
-        });
-        */
+
         builder.setPositiveButton("Calificar", (dialog, which) -> {
             Toast.makeText(AcercaDeActivity.this, "¡Gracias por tu apoyo!", Toast.LENGTH_SHORT).show();
-            // Aquí podrías abrir la Play Store en el futuro
+            // Descomenta el código de Play Store cuando estés listo para publicar
         });
 
         builder.setNegativeButton("Ahora no", (dialog, which) -> dialog.dismiss());
