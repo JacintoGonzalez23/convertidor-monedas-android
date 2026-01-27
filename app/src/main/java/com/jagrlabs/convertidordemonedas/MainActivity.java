@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         View contextView = findViewById(android.R.id.content);
         Snackbar.make(contextView, mensaje, Snackbar.LENGTH_LONG)
                 .setAction("OK", v -> {}) // Botón de cerrar
-                .setActionTextColor(getResources().getColor(R.color.primary_blue))
+                .setActionTextColor(androidx.core.content.ContextCompat.getColor(this, R.color.primary_blue))
                 .show();
     }
 
