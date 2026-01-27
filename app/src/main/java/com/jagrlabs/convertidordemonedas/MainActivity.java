@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //  Llama al método de configuración
+        //  Llama al metodo configuracion de vistas y spinners
         configurarVistasYSpinners();
 
         //  Carga anuncio con retraso para no bloquear la UI
