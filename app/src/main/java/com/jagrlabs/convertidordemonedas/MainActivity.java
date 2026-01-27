@@ -1,4 +1,5 @@
 package com.jagrlabs.convertidordemonedas;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +15,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.view.View;
+import android.widget.ProgressBar;
+import com.google.android.material.snackbar.Snackbar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -34,13 +37,16 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import androidx.appcompat.widget.Toolbar;
-
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText editAmount;
     private Spinner spinnerTo;
     private TextView tvResult;
+    private ProgressBar progressBar;
 
     // Se agrega Looper.getMainLooper() para que el Handler funcione correctamente
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -48,59 +54,86 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Configuración de tema (no olvidarse siempre primero sino da problemas)
         SharedPreferences prefs = getSharedPreferences(AppPreferences.PREFS_NAME, MODE_PRIVATE);
         boolean modoOscuro = prefs.getBoolean(AppPreferences.MODO_OSCURO_KEY, false);
-
-        // Fuerza el tema ANTES de super.onCreate
-        if (modoOscuro) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
+        AppCompatDelegate.setDefaultNightMode(modoOscuro ?
+                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // --- CONFIGURACIÓN DE LA NUEVA TOOLBAR ---
-        // Esto activa los tres puntos en el diseño moderno
+        //  Inicializa Ads
+        MobileAds.initialize(this, initializationStatus -> {});
+
+        //  Configura la Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Inicialización de vistas
+        //  Llama al método de configuración
+        configurarVistasYSpinners();
+
+        //  Carga anuncio con retraso para no bloquear la UI
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            AdView adView = findViewById(R.id.adView);
+            if (adView != null) {
+                AdRequest adRequest = new AdRequest.Builder().build();
+                adView.loadAd(adRequest);
+            }
+        }, 500);
+    }
+
+
+    private void configurarVistasYSpinners() {
+        //  Inicialización normal de vistas
         editAmount = findViewById(R.id.editAmount);
-        Spinner spinnerFrom = findViewById(R.id.spinnerFrom);
         spinnerTo = findViewById(R.id.spinnerTo);
+        Spinner spinnerFrom = findViewById(R.id.spinnerFrom);
         tvResult = findViewById(R.id.tvResult);
+        progressBar = findViewById(R.id.progressBar);
         Button btnConvert = findViewById(R.id.btnConvert);
 
-        // Configuración de entrada de texto
-        editAmount.setInputType(android.text.InputType.TYPE_CLASS_NUMBER | android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        editAmount.setOnEditorActionListener((v, actionId, event) -> {
+            // Detecta cuando el usuario presiona el botón Hecho (osea el check) del teclado
+            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                convertCurrency(); // Ejecuta la conversión directamente
+                return true;
+            }
+            return false;
+        });
+        //  Usa un Handler para "empujar" la carga del adaptador al final de la cola de la UI
+        new Handler(Looper.getMainLooper()).post(() -> {
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    this,
+                    R.array.currencies,
+                    R.layout.item_spinner_personalizado // El que tiene texto azul
+            );
+            // esta linea hace que el menu desplegable del spíner tome tambien la letra azul del layout item spinner personalizado
+            adapter.setDropDownViewResource(R.layout.item_spinner_personalizado);
 
-        // Adaptadores para Spinners
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.currencies, android.R.layout.simple_spinner_item
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerFrom.setAdapter(adapter);
+            spinnerTo.setAdapter(adapter);
 
-        spinnerFrom.setAdapter(adapter);
-        spinnerTo.setAdapter(adapter);
-        spinnerFrom.setSelection(0);
-        spinnerFrom.setEnabled(false);
+            spinnerFrom.setSelection(0);
+            spinnerFrom.setEnabled(false);
+
+            // Forzar la actualización al Spinner a redibujarse
+            spinnerTo.invalidate();
+        });
 
         btnConvert.setOnClickListener(view -> convertCurrency());
     }
 
     private void convertCurrency() {
+        // Validar conexión a internet con Snackbar
         if (!isNetworkConnected()) {
-            tvResult.setText(R.string.no_internet_connection);
-            tvResult.setTextSize(25);
+            mostrarSnackbar(getString(R.string.no_internet_connection));
             return;
         }
 
         String amountStr = editAmount.getText().toString().trim();
         if (amountStr.isEmpty()) {
-            tvResult.setText(R.string.empy_amount);
-            tvResult.setTextSize(25);
+            mostrarSnackbar(getString(R.string.empy_amount));
             return;
         }
 
@@ -109,29 +142,60 @@ public class MainActivity extends AppCompatActivity {
         String apiKey = "e08261134e50a4e0da1fe4e6";
         String apiUrl = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/USD";
 
-        // --- REEMPLAZO DE ASYNCTASK ---
+        // --- CAMBIOS PARA EL PROGRESSBAR ---
+        tvResult.setVisibility(View.GONE); // Ocultamos el resultado anterior
+        progressBar.setVisibility(View.VISIBLE); // MOSTRAR BARRA
+        findViewById(R.id.btnConvert).setEnabled(false); // Desactivar botón para evitar spam
+
         executorService.execute(() -> {
-            // Esto corre en segundo plano (doInBackground)
+
             Double result = performNetworkRequest(apiUrl, toCurrency, amount);
 
             mainHandler.post(() -> {
-                // Esto corre en el hilo principal (onPostExecute)
+                progressBar.setVisibility(View.GONE);
+                findViewById(R.id.btnConvert).setEnabled(true);
+
                 if (result != null) {
-                    String formattedResult = String.format(Locale.getDefault(), "%.2f", result);
-                    tvResult.setText(formattedResult);
-                    tvResult.setTextSize(40);
+                    tvResult.setVisibility(View.VISIBLE);
+                    tvResult.setAlpha(0f); // se empieza invisible para el Fade In
+
+                    // --- ANIMACIÓN DE CONTADOR ---
+                    // se anima desde 0 hasta el resultado obtenido
+                    ValueAnimator animator = ValueAnimator.ofFloat(0f, result.floatValue());
+                    animator.setDuration(1000); // Duración de 1 segundo
+
+                    animator.addUpdateListener(animation -> {
+                        float animatedValue = (float) animation.getAnimatedValue();
+                        tvResult.setText(String.format(Locale.getDefault(), "%.2f", animatedValue));
+                    });
+
+                    // --- ANIMACIÓN DE FADE IN (Aparece suave) ---
+                    tvResult.animate()
+                            .alpha(1f)
+                            .setDuration(500)
+                            .start();
+
+                    animator.start();
+                    tvResult.setTextSize(48);
                 } else {
-                    tvResult.setText(R.string.empy_amount);
-                    tvResult.setTextSize(40);
+                    mostrarSnackbar("Error al conectar con el servidor");
                 }
             });
         });
 
-        // Oculta teclado
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        if (getCurrentFocus() != null) {
-            imm.hideSoftInputFromWindow(editAmount.getWindowToken(), 0);
-        }
+        // Esto cierra el teclado automáticamente al presionar el botón
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editAmount.getWindowToken(), 0);
+    }
+
+    // metodo snackbar
+    private void mostrarSnackbar(String mensaje) {
+        // Usamos el layout principal para mostrar el snackbar
+        View contextView = findViewById(android.R.id.content);
+        Snackbar.make(contextView, mensaje, Snackbar.LENGTH_LONG)
+                .setAction("OK", v -> {}) // Botón de cerrar
+                .setActionTextColor(getResources().getColor(R.color.primary_blue))
+                .show();
     }
 
     // Lógica de red extraída de AsyncTask
@@ -190,4 +254,26 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
+    @Override
+    protected void onPause() {
+        if (findViewById(R.id.adView) != null) {
+            ((AdView) findViewById(R.id.adView)).pause();
+        }
+        super.onPause();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (findViewById(R.id.adView) != null) {
+            ((AdView) findViewById(R.id.adView)).resume();
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        if (findViewById(R.id.adView) != null) {
+            ((AdView) findViewById(R.id.adView)).destroy();
+        }
+        super.onDestroy();
+    }
+
 }

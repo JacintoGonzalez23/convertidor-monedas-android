@@ -63,6 +63,8 @@
                 android:gravity="center"
                 android:hint="@string/ingrese_el_dolar"
                 android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:imeOptions="actionDone"
                 android:paddingTop="24dp"
                 android:paddingBottom="16dp"
                 android:textColor="?android:attr/textColorPrimary"
@@ -98,6 +100,7 @@
                 android:id="@+id/spinnerFrom"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:backgroundTint="?android:attr/textColorPrimary"
                 android:contentDescription="@string/la_monedad_base_es_dolar" />
 
             <View
@@ -117,6 +120,7 @@
                 android:id="@+id/spinnerTo"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:backgroundTint="?android:attr/textColorPrimary"
                 android:contentDescription="@string/seleccionar_moneda_de_destino" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -132,13 +136,15 @@
         app:cornerRadius="12dp"
         android:backgroundTint="@color/primary_blue" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:indeterminateTint="@color/primary_blue"
+            android:elevation="8dp" />
 
     <TextView
         android:id="@+id/tvResult"
@@ -149,6 +155,16 @@
         android:textColor="@color/primary_blue"
         android:textSize="48sp"
         android:textStyle="bold" />
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"> </com.google.android.gms.ads.AdView>
 
 </LinearLayout>
 </ScrollView>
